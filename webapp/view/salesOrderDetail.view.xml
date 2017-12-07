@@ -1,0 +1,90 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form" controllerName="salesviewer.controller.salesOrderDetail">
+	<Page showNavButton="false" navButtonPress="onNavBack" title="{i18n>orderTitle}">
+		<content>
+			<Table noDataText="" id="__table1">
+				<headerToolbar>
+					<OverflowToolbar ariaLabelledBy="__text1-__page0-0" width="100%" id="__toolbar2"/>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>detailLineItemTableID}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>detailLineItemTableBrutto}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>detailLineItemTableNetto}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>detailLineItemTableTax}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>detailLineItemTableCurrency}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectNumber number="{= parseFloat(${SalesOrderID}) }"/>
+							<ObjectNumber number="{path: 'GrossAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}"/>
+							<ObjectNumber number="{path: 'NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}"/>
+							<ObjectNumber number="{path: 'TaxAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}"/>
+							<Label text="{CurrencyCode}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Table noDataText="Drop column list items here and columns in the area above" id="__table0" items="{ToLineItems}">
+				<headerToolbar>
+					<Toolbar id="lineItemsToolbar">
+						<Title id="lineItemsHeader" text="{i18n>orderTable}"/>
+					</Toolbar>
+				</headerToolbar>
+			    <items>
+			        <ColumnListItem id="__item4">
+			            <cells>
+			            	<ObjectNumber number="{= parseFloat(${ItemPosition}) }"/>
+							<ObjectNumber number="{ProductID}"/>
+							<ObjectNumber number="{path: 'GrossAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}" state="{path: 'GrossAmount', formatter: '.formatter.overValueDetail'}"/>
+							<ObjectNumber number="{path: 'NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}"/>
+							<ObjectNumber number="{path: 'TaxAmount', type: 'sap.ui.model.type.Float', formatOptions: {        groupingEnabled: true, groupingSeparator:' '}}"/>
+							<ObjectNumber number="{CurrencyCode}"/>
+							<Label text="{path:'DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy.MM.dd'}}"/>
+							<ObjectNumber number="{Quantity}"/>
+							<ObjectNumber number="{QuantityUnit}"/>
+		                </cells>
+			        </ColumnListItem>
+			       </items>
+			    <columns>
+					<Column>
+						<Text text="{i18n>orderProductPosition}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderProductID}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderBrutto}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderNetto}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderTax}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderCurrency}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderDelivery}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderQuantity}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>orderUnit}"/>
+					</Column>
+		        </columns>
+	        </Table>
+		</content>
+	</Page>
+</mvc:View>
