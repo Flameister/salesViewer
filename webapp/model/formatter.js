@@ -13,7 +13,7 @@ sap.ui.define([
 			},
 				
 						formatMapUrl: function(sStreet, sBuilding, sZIP, sCity, sCountry) {
-								return "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=320x320&markers="
+								return "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=430x430&markers="
 								+ jQuery.sap.encodeURL(sStreet + " " + sBuilding + ", " + sZIP +  " " + sCity + ", " + sCountry);
 			}
 

@@ -19,7 +19,6 @@ sap.ui.define([
 						this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 						this.setModel(oViewModel, "detailView");
 						this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
-						this._bindMap();
 					},
 
 					onListUpdateFinished: function(oEvent) {
@@ -109,33 +108,7 @@ sap.ui.define([
 						oViewModel.setProperty("/busy", true);
 						// Restore original busy indicator delay for the detail view
 						oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
-					},
-					_bindMap: function() {
-						//Create JSON Model with URL
-/*var oModel = new sap.ui.model.json.JSONModel();
-
-//API Key for API Sandbox
-var sHeaders = {"Content-Type":"application/json","Accept":"application/json, application/xml","APIKey":"fPAgELtGEWRnv4OMfEdsOLeetONs3J2U"};
-
-//sending request
-//API endpoint for API sandbox 
-oModel.loadData("https://sandbox.api.sap.com/here/geocoder/6.2/geocode.json", null, true, "GET", null, false, sHeaders);
-//Optional query parameters: "strictlanguagemode" , "pageinformation"
-//To view the complete list of query parameters, see its API definition.
-
-//Available API Endpoints
-//https://geocoder.cit.api.here.com/6.2
-
-//You can assign the created data model to a View and UI5 controls can be bound to it. Please refer documentation available at the below link for more information.
-//https://sapui5.hana.ondemand.com/#docs/guide/96804e3315ff440aa0a50fd290805116.html#loio96804e3315ff440aa0a50fd290805116
-
-//The below code snippet for printing on the console is for testing/demonstration purpose only. 
-// This must not be done in real UI5 applications.
-oModel.attachRequestCompleted(function(oEvent){
-    var oData = oEvent.getSource().oData;
-    console.log(oData);
-});*/
-
 					}
+
 					});
 			});
